@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>CSS фреймворки</title>
+    <link rel="stylesheet" href="https://unpkg.com/turretcss/dist/turretcss.min.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="img/logo1.jpg" type="image/jpg">
+</head>
+<body>
+    <header>
+        <nav>
+            <div id="navbar">
+                <span style="font-size:30px;cursor:pointer" onclick="toggleNav()">☰</span>
+                <a href="https://vk.com/kabakov1999">Контакты</a>
+                <a href="page01.html">О нас</a>
+            </div>
+            
+            <div id="mySidenav" class="sidenav">
+                <a href="index.html">Главная</a>
+                <a href="page2.html">Bootstrap</a>
+                <a href="page3.html">Materialize CSS</a>
+                <a href="page4.html">Turretcss</a>
+                <a href="page5.html">Tailwind CSS</a>
+                <a href="page6.html">UIkit</a>
+                <a href="page7.html">Pure CSS</a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="content">
+        <div class="head_h1"><h1>О нас</h1></div>
+        <div class="container">
+            <div class="main">
+                <h3 style="margin-top: 30px;">Добро пожаловать на наш сайт, посвященный CSS фреймворкам!</h3>
+                <p>Этот сайт создан студентом Сыктывкарского лесного института, который увлекается веб-разработкой и стремится развивать свои знания в обзасти ИТ.</p>
+                <p>Мой сайт — это платформа, где вы найдете информацию о различных CSS фреймворках, их преимуществах и особенностях. Я стремилюсь помочь начинающим и опытным разработчикам выбрать подходящий инструмент для своих проектов и научиться эффективно использовать его.</p>
+            </div>
+            <img src="img/обложка-2-2048x995.jpg.webp" alt="фоточка" width="900" class="centered-image">
+        </div>  
+    </main>
+
+    <footer>
+        <div class="footer">
+            &copy; 2024 Все права защищены. | Дизайн и разработка: <a href="https://vk.com/kabakov1999">Владимир Кабанов</a>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var sidenav = document.getElementById("mySidenav");
+            var content = document.querySelector('.content');
+    
+            // Убедитесь, что боковое меню закрыто на мобильных устройствах
+            if (window.innerWidth <= 768) {
+                sidenav.classList.remove("open");
+                content.style.marginLeft = "0";
+            } else {
+                sidenav.classList.add("open"); // Открыть меню при загрузке страницы на десктопах
+                content.style.marginLeft = "250px";
+            }
+    
+            // Закрытие бокового меню при изменении размера окна
+            window.addEventListener('resize', function () {
+                if (window.innerWidth < 768) {
+                    if (sidenav.classList.contains("open")) {
+                        sidenav.classList.remove("open");
+                        content.style.marginLeft = "0";
+                    }
+                } else {
+                    sidenav.classList.add("open"); // Открыть меню на десктопах
+                    content.style.marginLeft = "250px"; // Сдвиг контента на десктопах
+                }
+            });
+        });
+    
+        function toggleNav() {
+            var sidenav = document.getElementById("mySidenav");
+            var content = document.querySelector('.content');
+    
+            if (sidenav.classList.contains("open")) {
+                sidenav.classList.remove("open");
+                content.style.marginLeft = "0";
+            } else {
+                sidenav.classList.add("open");
+                if (window.innerWidth > 768) {
+                    content.style.marginLeft = "250px"; // Сдвиг контента на десктопах
+                } else {
+                    content.style.marginLeft = "0"; // Не сдвигаем контент на мобильных устройствах
+                }
+            }
+        }
+    </script>
+</body>
+</html>

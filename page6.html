@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>CSS фреймворки</title>
+    <link rel="stylesheet" href="https://unpkg.com/turretcss/dist/turretcss.min.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div id="navbar">
+                <span style="font-size:30px;cursor:pointer" onclick="toggleNav()">☰</span>
+                <a href="https://vk.com/kabakov1999">Контакты</a>
+                <a href="page01.html">О нас</a>
+            </div>
+            
+            <div id="mySidenav" class="sidenav">
+                <a href="index.html">Главная</a>
+                <a href="page2.html">Bootstrap</a>
+                <a href="page3.html">Materialize CSS</a>
+                <a href="page4.html">Turretcss</a>
+                <a href="page5.html">Tailwind CSS</a>
+                <a href="page6.html">UIkit</a>
+                <a href="page7.html">Pure CSS</a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="content">
+        <div class="head_h1"><h1>UIkit</h1></div>
+        <div class="container">
+            <div class="main">
+                <h2>Что такое UIkit?</h2>
+
+                <p>UIkit — это мощный и гибкий фронтенд-фреймворк, созданный для разработки современных веб-интерфейсов. Он предоставляет набор компонентов, стилей и инструментов, которые позволяют разработчикам быстро и эффективно создавать адаптивные веб-приложения и сайты.</p>
+
+                <img src="img/UIkit.png" alt="фоточка" class="centered-image">
+
+                <h3>Основные характеристики UIkit</h3>
+
+                <ul>
+                    <li>Компоненты:</li>
+                    <p>UIkit включает в себя множество преднастроенных компонентов, таких как кнопки, формы, навигация и модальные окна, которые можно легко интегрировать в проекты.</p>
+
+                    <li>Адаптивный дизайн:</li>
+                    <p>Фреймворк поддерживает мобильные и десктопные устройства с помощью адаптивной сетки и гибких макетов, позволяя вашему контенту выглядеть хорошо на любом экране.</p>
+
+                    <li>Темизация:</li>
+                    <p>UIkit позволяет настраивать внешний вид компонентов с помощью простых в использовании переменных CSS, что упрощает процесс создания индивидуальных тем.</p>
+
+                    <li>Модульность:</li>
+                    <p>UIkit построен на принципах модульности, что позволяет подключать только те компоненты, которые вам нужны, минимизируя размер вашего проекта.</p>
+
+                    <li>Поддержка JavaScript:</li>
+                    <p>Фреймворк включает в себя JavaScript-компоненты для управления интерактивностью, такие как слайдеры, табы и выпадающие меню, что упрощает создание динамичных интерфейсов.</p>
+                </ul>
+
+                <h3>Почему выбрать UIkit?</h3>
+                <p>UIkit предлагает разработчикам мощный набор инструментов для создания адаптивных и современных интерфейсов. С его помощью вы можете быстро реализовать сложные макеты и обеспечить отличный пользовательский опыт без лишних затрат времени на написание стилей.</p>
+
+                <p>Для получения дополнительной информации и доступа к документации, пожалуйста, посетите <a href="https://getuikit.com/docs/introduction" target="_blank">официальный сайт UIkit</a>.</p>
+                
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer">
+            &copy; 2024 Все права защищены. | Дизайн и разработка: <a href="https://vk.com/kabakov1999">Владимир Кабанов</a>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var sidenav = document.getElementById("mySidenav");
+            var content = document.querySelector('.content');
+    
+            // Убедитесь, что боковое меню закрыто на мобильных устройствах
+            if (window.innerWidth <= 768) {
+                sidenav.classList.remove("open");
+                content.style.marginLeft = "0";
+            } else {
+                sidenav.classList.add("open"); // Открыть меню при загрузке страницы на десктопах
+                content.style.marginLeft = "250px";
+            }
+    
+            // Закрытие бокового меню при изменении размера окна
+            window.addEventListener('resize', function () {
+                if (window.innerWidth < 768) {
+                    if (sidenav.classList.contains("open")) {
+                        sidenav.classList.remove("open");
+                        content.style.marginLeft = "0";
+                    }
+                } else {
+                    sidenav.classList.add("open"); // Открыть меню на десктопах
+                    content.style.marginLeft = "250px"; // Сдвиг контента на десктопах
+                }
+            });
+        });
+    
+        function toggleNav() {
+            var sidenav = document.getElementById("mySidenav");
+            var content = document.querySelector('.content');
+    
+            if (sidenav.classList.contains("open")) {
+                sidenav.classList.remove("open");
+                content.style.marginLeft = "0";
+            } else {
+                sidenav.classList.add("open");
+                if (window.innerWidth > 768) {
+                    content.style.marginLeft = "250px"; // Сдвиг контента на десктопах
+                } else {
+                    content.style.marginLeft = "0"; // Не сдвигаем контент на мобильных устройствах
+                }
+            }
+        }
+    </script>
+</body>
+</html>
