@@ -52,40 +52,43 @@
         document.addEventListener('DOMContentLoaded', function () {
             var sidenav = document.getElementById("mySidenav");
             var content = document.querySelector('.content');
-    
-            // Убедитесь, что боковое меню закрыто на мобильных устройствах
-            if (window.innerWidth <= 768) {
-                sidenav.classList.remove("open");
-                content.style.marginLeft = "0";
-            } else {
-                sidenav.classList.add("open"); // Открыть меню при загрузке страницы на десктопах
-                content.style.marginLeft = "250px";
-            }
-    
-            // Закрытие бокового меню при изменении размера окна
-            window.addEventListener('resize', function () {
-                if (window.innerWidth < 768) {
-                    if (sidenav.classList.contains("open")) {
-                        sidenav.classList.remove("open");
-                        content.style.marginLeft = "0";
-                    }
+
+            // Функция для обновления состояния бокового меню и контента
+            function updateLayout() {
+                if (window.innerWidth <= 1000) {
+                    sidenav.classList.remove("open");
+                    content.style.marginLeft = "0";
                 } else {
-                    sidenav.classList.add("open"); // Открыть меню на десктопах
-                    content.style.marginLeft = "250px"; // Сдвиг контента на десктопах
+                    sidenav.classList.add("open");
+                    content.style.marginLeft = "250px";
+                }
+            }
+
+            // Инициализация состояния при загрузке страницы
+            updateLayout();
+
+            // Обновление состояния при изменении размера окна
+            window.addEventListener('resize', function() {
+                updateLayout();
+
+                // Добавляем проверку и закрываем меню при изменении размера окна на мобильных
+                if (window.innerWidth <= 1000) {
+                    sidenav.classList.remove("open");
+                    content.style.marginLeft = "0";
                 }
             });
         });
-    
+
         function toggleNav() {
             var sidenav = document.getElementById("mySidenav");
             var content = document.querySelector('.content');
-    
+
             if (sidenav.classList.contains("open")) {
                 sidenav.classList.remove("open");
                 content.style.marginLeft = "0";
             } else {
                 sidenav.classList.add("open");
-                if (window.innerWidth > 768) {
+                if (window.innerWidth > 1000) {
                     content.style.marginLeft = "250px"; // Сдвиг контента на десктопах
                 } else {
                     content.style.marginLeft = "0"; // Не сдвигаем контент на мобильных устройствах
