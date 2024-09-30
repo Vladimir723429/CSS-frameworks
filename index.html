@@ -175,7 +175,7 @@
         // Убедитесь, что боковое меню закрыто на мобильных устройствах
         if (window.innerWidth <= 1000) {
             sidenav.classList.remove("open");
-            content.style.marginLeft = "0";
+            content.style.marginLeft = "0px";
         } else {
             sidenav.classList.add("open"); // Открыть меню при загрузке страницы на десктопах
             content.style.marginLeft = "250px";
@@ -185,7 +185,7 @@
         window.addEventListener('resize', function () {
             if (window.innerWidth <= 1000) {
                 sidenav.classList.remove("open"); // Закрыть меню на мобильных устройствах
-                content.style.marginLeft = "0";
+                content.style.marginLeft = "0px";
             } else {
                 sidenav.classList.add("open"); // Открыть меню на десктопах
                 content.style.marginLeft = "250px"; // Сдвиг контента на десктопах
@@ -199,13 +199,13 @@
 
         if (sidenav.classList.contains("open")) {
             sidenav.classList.remove("open");
-            content.style.marginLeft = "0";
+            content.style.marginLeft = "0px";
         } else {
             sidenav.classList.add("open");
             if (window.innerWidth > 1000) {
                 content.style.marginLeft = "250px"; // Сдвиг контента на десктопах
             } else {
-                content.style.marginLeft = "0"; // Не сдвигаем контент на мобильных устройствах
+                content.style.marginLeft = "0px"; // Не сдвигаем контент на мобильных устройствах
             }
         }
     }
