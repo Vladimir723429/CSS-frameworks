@@ -172,25 +172,22 @@
         var sidenav = document.getElementById("mySidenav");
         var content = document.querySelector('.content');
 
-        // Убедитесь, что боковое меню закрыто на мобильных устройствах
-        if (window.innerWidth <= 1000) {
-            sidenav.classList.remove("open");
-            content.style.marginLeft = "0px";
-        } else {
-            sidenav.classList.add("open"); // Открыть меню при загрузке страницы на десктопах
-            content.style.marginLeft = "250px";
+        // Функция для обновления состояния бокового меню и контента
+        function updateLayout() {
+            if (window.innerWidth <= 1000) {
+                sidenav.classList.remove("open");
+                content.style.marginLeft = "0";
+            } else {
+                sidenav.classList.add("open");
+                content.style.marginLeft = "250px";
+            }
         }
 
-        // Закрытие бокового меню при изменении размера окна
-        window.addEventListener('resize', function () {
-            if (window.innerWidth <= 1000) {
-                sidenav.classList.remove("open"); // Закрыть меню на мобильных устройствах
-                content.style.marginLeft = "0px";
-            } else {
-                sidenav.classList.add("open"); // Открыть меню на десктопах
-                content.style.marginLeft = "250px"; // Сдвиг контента на десктопах
-            }
-        });
+        // Инициализация состояния при загрузке страницы
+        updateLayout();
+
+        // Обновление состояния при изменении размера окна
+        window.addEventListener('resize', updateLayout);
     });
 
     function toggleNav() {
@@ -199,13 +196,13 @@
 
         if (sidenav.classList.contains("open")) {
             sidenav.classList.remove("open");
-            content.style.marginLeft = "0px";
+            content.style.marginLeft = "0";
         } else {
             sidenav.classList.add("open");
             if (window.innerWidth > 1000) {
                 content.style.marginLeft = "250px"; // Сдвиг контента на десктопах
             } else {
-                content.style.marginLeft = "0px"; // Не сдвигаем контент на мобильных устройствах
+                content.style.marginLeft = "0"; // Не сдвигаем контент на мобильных устройствах
             }
         }
     }
