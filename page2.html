@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>CSS фреймворки</title>
+    <link rel="stylesheet" href="https://unpkg.com/turretcss/dist/turretcss.min.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div id="navbar">
+                <span style="font-size:30px;cursor:pointer" onclick="toggleNav()">☰</span>
+                <a href="https://vk.com/kabakov1999">Контакты</a>
+                <a href="page01.html">О нас</a>
+            </div>
+            
+            <div id="mySidenav" class="sidenav">
+                <a href="index.html">Главная</a>
+                <a href="page2.html">Bootstrap</a>
+                <a href="page3.html">Materialize CSS</a>
+                <a href="page4.html">Turretcss</a>
+                <a href="page5.html">Tailwind CSS</a>
+                <a href="page6.html">UIkit</a>
+                <a href="page7.html">Pure CSS</a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="content">
+        <div class="head_h1"><h1>Bootstrap</h1></div>
+        <div class="container">
+            <div class="main">
+                <h2>Что такое Bootstrap?</h2>
+
+                <p>Bootstrap — это популярный CSS-фреймворк, разработанный Twitter, который упрощает процесс создания адаптивных и мобильных сайтов. Он предоставляет разработчикам мощные инструменты и готовые компоненты для быстрой и эффективной верстки, что позволяет сосредоточиться на функциональности и дизайне, а не на написании кода с нуля.</p>
+
+                <img src="img/bootstrap.jpg" alt="фоточка" class="centered-image">
+
+                <h3>Основные характеристики Bootstrap</h3>
+
+                <ul>
+                    <li>Сеточная система:</li>
+                    <p>Bootstrap использует гибкую и адаптивную сеточную систему, которая позволяет легко создавать макеты, подходящие для различных экранов, от мобильных до настольных.</p>
+
+                    <li>Готовые компоненты:</li>
+                    <p>Включает множество готовых к использованию компонентов интерфейса, таких как кнопки, карточки, навигационные панели, формы и модальные окна. Это значительно ускоряет процесс разработки.</p>
+
+                    <li>Кастомизация:</li>
+                    <p>Bootstrap предоставляет возможность легко кастомизировать стили с помощью Sass-переменных, что позволяет разработчикам быстро адаптировать внешний вид своего проекта под конкретные требования.</p>
+
+                    <li>Совместимость с браузерами:</li>
+                    <p>Фреймворк обеспечивает совместимость с большинством современных браузеров, что делает его отличным выбором для разработки кроссбраузерных приложений.</p>
+
+                    <li>Документация и сообщество:</li>
+                    <p>Bootstrap имеет обширную документацию, что делает его доступным для разработчиков всех уровней. Кроме того, у него активно развивающееся сообщество, которое постоянно обновляет и улучшает фреймворк.</p>
+                </ul>
+
+                <h3>Почему выбрать Bootstrap?</h3>
+                <p>Bootstrap — это отличный выбор для разработчиков, которые хотят быстро создавать стильные и адаптивные сайты без необходимости глубоко погружаться в CSS. Его популярность и поддержка со стороны сообщества делают его надежным инструментом для разработки современных веб-приложений.</p>
+
+                <p>Для более детального изучения возможностей Bootstrap, вы можете ознакомиться с <a href="https://getbootstrap.com/docs/5.3/getting-started/introduction/" target="_blank">официальной документацией</a>.</p>
+                
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer">
+            &copy; 2024 Все права защищены. | Дизайн и разработка: <a href="https://vk.com/kabakov1999">Владимир Кабаков</a>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var sidenav = document.getElementById("mySidenav");
+            var content = document.querySelector('.content');
+
+            // Функция для обновления состояния бокового меню и контента
+            function updateLayout() {
+                if (window.innerWidth <= 1000) {
+                    sidenav.classList.remove("open");
+                    content.style.marginLeft = "0";
+                } else {
+                    sidenav.classList.add("open");
+                    content.style.marginLeft = "250px";
+                }
+            }
+
+            // Инициализация состояния при загрузке страницы
+            updateLayout();
+
+            // Обновление состояния при изменении размера окна
+            window.addEventListener('resize', function() {
+                updateLayout();
+
+                // Добавляем проверку и закрываем меню при изменении размера окна на мобильных
+                if (window.innerWidth <= 1000) {
+                    sidenav.classList.remove("open");
+                    content.style.marginLeft = "0";
+                }
+            });
+        });
+
+        function toggleNav() {
+            var sidenav = document.getElementById("mySidenav");
+            var content = document.querySelector('.content');
+
+            if (sidenav.classList.contains("open")) {
+                sidenav.classList.remove("open");
+                content.style.marginLeft = "0";
+            } else {
+                sidenav.classList.add("open");
+                if (window.innerWidth > 1000) {
+                    content.style.marginLeft = "250px"; // Сдвиг контента на десктопах
+                } else {
+                    content.style.marginLeft = "0"; // Не сдвигаем контент на мобильных устройствах
+                }
+            }
+        }
+    </script>
+</body>
+</html>

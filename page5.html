@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>CSS фреймворки</title>
+    <link rel="stylesheet" href="https://unpkg.com/turretcss/dist/turretcss.min.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div id="navbar">
+                <span style="font-size:30px;cursor:pointer" onclick="toggleNav()">☰</span>
+                <a href="https://vk.com/kabakov1999">Контакты</a>
+                <a href="page01.html">О нас</a>
+            </div>
+            
+            <div id="mySidenav" class="sidenav">
+                <a href="index.html">Главная</a>
+                <a href="page2.html">Bootstrap</a>
+                <a href="page3.html">Materialize CSS</a>
+                <a href="page4.html">Turretcss</a>
+                <a href="page5.html">Tailwind CSS</a>
+                <a href="page6.html">UIkit</a>
+                <a href="page7.html">Pure CSS</a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="content">
+        <div class="head_h1"><h1>Tailwind CSS</h1></div>
+        <div class="container">
+            <div class="main">
+                <h2>Что такое Tailwind CSS?</h2>
+
+                <p>Tailwind CSS — это современный утилитарный CSS-фреймворк, который позволяет разработчикам создавать уникальные пользовательские интерфейсы с использованием класса для каждой CSS-стилизации. Вместо того чтобы предоставлять готовые компоненты, Tailwind предлагает гибкие утилиты, которые позволяют настраивать стили прямо в разметке.</p>
+
+                <img src="img/TailwindCSS.png" alt="фоточка" width="900" class="centered-image">
+
+                <h3>Основные характеристики Tailwind CSS</h3>
+
+                <ul>
+                    <li>Утилитарный подход:</li>
+                    <p>Tailwind CSS основан на принципе утилитарности, что позволяет вам использовать классы для применения стилей. Это обеспечивает большую гибкость и контроль над дизайном.</p>
+
+                    <li>Адаптивность:</li>
+                    <p>Фреймворк поддерживает адаптивные дизайны из коробки с помощью классов, которые позволяют легко управлять стилями для различных экранов и устройств.</p>
+
+                    <li>Настраиваемость:</li>
+                    <p>Tailwind предлагает обширные возможности настройки, включая возможность создания пользовательских тем, что позволяет разработчикам легко адаптировать стили под требования проекта.</p>
+
+                    <li>Скорость разработки:</li>
+                    <p>Используя утилитарные классы, вы можете значительно ускорить процесс разработки, избегая написания большого количества CSS-кода.</p>
+
+                    <li>Совместимость с JavaScript:</li>
+                    <p>Tailwind CSS легко интегрируется с современными JavaScript-фреймворками, такими как React, Vue и Angular, что делает его идеальным выбором для создания сложных интерфейсов.</p>
+                </ul>
+
+                <h3>Почему выбрать Tailwind CSS?</h3>
+                <p>Если вы хотите иметь полный контроль над стилями вашего проекта и цените гибкость в разработке, Tailwind CSS — это идеальный выбор. Этот фреймворк помогает создавать высококачественные интерфейсы быстрее и проще, сохраняя при этом полный контроль над каждым элементом дизайна.</p>
+
+                <p>Для получения дополнительной информации и доступа к документации, пожалуйста, посетите <a href="https://tailwindcss.com/docs/installation" target="_blank">официальный сайт Tailwind CSS</a>.</p>
+                
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer">
+            &copy; 2024 Все права защищены. | Дизайн и разработка: <a href="https://vk.com/kabakov1999">Владимир Кабаков</a>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var sidenav = document.getElementById("mySidenav");
+            var content = document.querySelector('.content');
+
+            // Функция для обновления состояния бокового меню и контента
+            function updateLayout() {
+                if (window.innerWidth <= 1000) {
+                    sidenav.classList.remove("open");
+                    content.style.marginLeft = "0";
+                } else {
+                    sidenav.classList.add("open");
+                    content.style.marginLeft = "250px";
+                }
+            }
+
+            // Инициализация состояния при загрузке страницы
+            updateLayout();
+
+            // Обновление состояния при изменении размера окна
+            window.addEventListener('resize', function() {
+                updateLayout();
+
+                // Добавляем проверку и закрываем меню при изменении размера окна на мобильных
+                if (window.innerWidth <= 1000) {
+                    sidenav.classList.remove("open");
+                    content.style.marginLeft = "0";
+                }
+            });
+        });
+
+        function toggleNav() {
+            var sidenav = document.getElementById("mySidenav");
+            var content = document.querySelector('.content');
+
+            if (sidenav.classList.contains("open")) {
+                sidenav.classList.remove("open");
+                content.style.marginLeft = "0";
+            } else {
+                sidenav.classList.add("open");
+                if (window.innerWidth > 1000) {
+                    content.style.marginLeft = "250px"; // Сдвиг контента на десктопах
+                } else {
+                    content.style.marginLeft = "0"; // Не сдвигаем контент на мобильных устройствах
+                }
+            }
+        }
+    </script>
+</body>
+</html>
